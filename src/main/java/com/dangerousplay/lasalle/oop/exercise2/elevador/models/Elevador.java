@@ -62,6 +62,16 @@ public class Elevador {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Elevador{" +
+                "andarAtual=" + andarAtual +
+                ", totalAndares=" + totalAndares +
+                ", capacidade=" + capacidade +
+                ", pessoas=" + pessoas +
+                '}';
+    }
+
     public int getAndarAtual() {
         return andarAtual;
     }

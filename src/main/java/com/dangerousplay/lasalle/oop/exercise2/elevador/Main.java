@@ -32,11 +32,14 @@ public class Main {
         final var elevador = new Elevador(capacidade, totalAndares);
 
         while(true){
+            System.out.println();
+            System.out.println();
             System.out.println("Escolha uma das opções: ");
             System.out.println("1 - Entrar no elevador.");
             System.out.println("2 - Sair do elevador.");
             System.out.println("3 - Subir um andar.");
             System.out.println("4 - Descer um andar.");
+            System.out.println("5 - Estado do elevador.");
 
             final var opcao = scanner.nextInt();
 
@@ -51,7 +54,7 @@ public class Main {
                     }),
                     Case($(2), e -> {
                         if(elevador.sai()){
-                            System.out.println("Uma pessoa saiu do elevador, total de pessoas no elevador" + elevador.getPessoas());
+                            System.out.println("Uma pessoa saiu do elevador, total de pessoas no elevador: " + elevador.getPessoas());
                         } else {
                             System.out.println("Não há ninguém no elevador.");
                         }
@@ -59,7 +62,30 @@ public class Main {
                         return null;
                     }),
                     Case($(3), e -> {
+                        if(elevador.sobe()){
+                            System.out.println("Elevador subindo para o andar: " + elevador.getAndarAtual());
+                        } else {
+                            System.out.println("O elevador está no último andar: " + elevador.getAndarAtual());
+                        }
+                        return null;
+                    }),
+                    Case($(4), e -> {
 
+                        if(elevador.desce()){
+                            System.out.println("Elevador desceu um andar: " + elevador.getAndarAtual());
+                        } else {
+                            System.out.println("Elevador já está no terreo: " + elevador.getAndarAtual());
+                        }
+
+                        return null;
+                    }),
+                    Case($(5), e -> {
+                        System.out.println(elevador.toString());
+                        return null;
+                    }),
+                    Case($(), e -> {
+                        System.out.println("Opção inválida, tente novamente. ");
+                        return null;
                     })
             );
         }
